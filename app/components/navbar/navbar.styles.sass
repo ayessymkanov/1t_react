@@ -1,0 +1,78 @@
+.nav
+    height: 50px
+    background-color: rgb(54, 64, 74)
+    color: white
+
+    & > .row
+        padding: 0
+        margin: 0
+        height: 100%
+        display: flex
+        align-items: center
+
+        & > .col
+            line-height: 50px
+            display: flex
+            justify-content: center
+            padding-left: 0
+
+    & a
+        color: white
+        text-decoration: none
+
+.logo
+    font-size: 1.5rem
+
+.menu
+    & > a
+        padding: 0 30px
+        transition: all 300ms
+        &:hover
+            background-color: #4a535c
+
+
+.profile.profile.profile
+    justify-content: flex-end
+
+.profile-link
+    position: relative
+    margin-left: 20px
+    font-size: 2rem
+    &:hover > ul
+        display: block
+
+    & > ul
+        position: absolute
+        right: 0
+        z-index: 1000
+        display: none
+        border: 1px solid #eee
+        border-top: none
+        border-radius: 0 0 5px 5px
+        background-color: white
+        overflow: hidden
+        margin: 0
+        padding: 0
+        color: black
+        & > li
+            line-height: 1
+            &:last-child
+                border-top: 1px solid #eee
+
+            & > a
+                display: flex
+                width: 100%
+                margin: 5px 0
+                padding: 10px 20px
+                color: #68838B
+                font-size: 14px
+                transition: all 300ms
+                &:hover
+                    background-color: #eee
+
+.notifications-link
+    font-size: 1.5rem
+
+
+.profile-submenu-icon
+    margin-right: 10px
