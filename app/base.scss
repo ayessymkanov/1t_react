@@ -2,3 +2,29 @@ body {
     font: 14px/1.5 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
     color: #333;
 }
+
+.box {
+    margin: 10px;
+
+    & + & {
+        margin-right: 5px
+    }
+}
+
+.row {
+    margin-left: 0 !important
+}
+
+
+//typography
+h1 {font-size: 3.125rem;}
+h2 {font-size: 2.618rem;}
+h3 {font-size: 1.931rem;}
+h4 {font-size: 1.618rem;}
+h5 {font-size: 1.194rem;}
+h6 {font-size: 1rem;}
+
+
+.search-options[aria-expanded=true] + ul {
+    width: 150px !important;
+}

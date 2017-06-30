@@ -9,7 +9,7 @@ class News extends Component {
             <div>
                 <Navbar/>
                 <Sidebar></Sidebar>
-                <Content><h1>News component</h1></Content>
+                <Content><h4>News component</h4></Content>
             </div>
         )
     }

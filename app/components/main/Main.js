@@ -13,7 +13,7 @@ class Main extends Component {
                 <div className="row">
                     <div className="col col--3-of-12"></div>
                     <div className="col col--9-of-12">
-                        <h1>Welcome to 1t</h1>
+                        <h4>Welcome to 1t</h4>
                     </div>
                 </div>
                 {this.props.children}

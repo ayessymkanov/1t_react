@@ -1,6 +1,8 @@
 .nav
     height: 50px
-    background-color: rgb(54, 64, 74)
+    margin-bottom: 20px
+    // background-color: rgb(54, 64, 74)
+    background-color: #1A237E
     color: white
 
     & > .row
@@ -29,6 +31,7 @@
         transition: all 300ms
         &:hover
             background-color: #4a535c
+            background-color: #3949AB
 
 
 .profile.profile.profile
@@ -46,14 +49,24 @@
         right: 0
         z-index: 1000
         display: none
-        border: 1px solid #eee
+        border: 1px solid #ccc
         border-top: none
         border-radius: 0 0 5px 5px
         background-color: white
-        overflow: hidden
         margin: 0
         padding: 0
         color: black
+        // box-shadow: 0 1px 2px 0 #3949AB
+        &::before
+            position: absolute
+            top: -15px
+            right: 5px
+            z-index: 10000
+            content: ''
+            width: 20px
+            height: 10px
+            border: 10px solid transparent
+            border-bottom: 10px solid white
         & > li
             line-height: 1
             &:last-child

@@ -9,7 +9,8 @@ import IosCog from 'react-icons/io/ios-cog'
 import Power from 'react-icons/io/power'
 
 const active = {
-    backgroundColor: '#4a535c'
+    backgroundColor: '#4a535c',
+    backgroundColor: '#3949AB'
 }
 
 class Navbar extends Component {

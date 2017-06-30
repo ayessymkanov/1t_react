@@ -9,7 +9,7 @@ class Workspace extends Component {
             <div>
                 <Navbar />
                 <Sidebar></Sidebar>
-                <Content><h1>Workspace component</h1></Content>
+                <Content><span>Workspace component</span></Content>
             </div>
         )
     }

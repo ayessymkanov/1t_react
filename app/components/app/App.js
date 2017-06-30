@@ -4,6 +4,8 @@ import Search from '../search/Search'
 import News from '../news/News'
 import Workspace from '../workspace/Workspace'
 import { Router, Route, browserHistory } from 'react-router'
+import store from '../../store'
+import { Provider } from 'react-redux'
 
 class App extends Component {
     render() {
