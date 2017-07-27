@@ -4,6 +4,13 @@ import IosSearchStrong from 'react-icons/io/ios-search-strong'
 import { connect } from 'react-redux'
 import { startSearch } from '../../action/search'
 import { Select, Option, Placeholder } from 'belle/lib'
+// import Select from '../form-components/select/Select'
+
+const options = [
+    {label: 'Лот', value: 'Hello1'},
+    {label: 'Объявление', value: 'Hello2'},
+    {label: 'План закупок', value: 'Hello3'}
+]
 
 class SearchBar extends Component {
 

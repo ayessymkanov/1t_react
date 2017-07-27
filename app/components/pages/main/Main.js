@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Navbar from '../navbar/Navbar'
+import Navbar from '../../navbar/Navbar'
 import Search from '../search/Search'
 import News from '../news/News'
 import Workspace from '../workspace/Workspace'
@@ -11,8 +11,7 @@ class Main extends Component {
             <div>
                 <Navbar />
                 <div className="row">
-                    <div className="col col--3-of-12"></div>
-                    <div className="col col--9-of-12">
+                    <div className="col col--12-of-12">
                         <h4>Welcome to 1t</h4>
                     </div>
                 </div>

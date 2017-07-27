@@ -8,9 +8,7 @@ export function startSearch(inputString, whereToSearch) {
         dispatch(startFetching())
         axios.get('https://jsonplaceholder.typicode.com/users')
             .then(response => {
-                setTimeout(() => {
-                    dispatch(finishFetching(response.data))
-                }, 1500)
+                dispatch(finishFetching(response.data))
             })
             .catch(error => dispatch(errorFetching(error)))
     }

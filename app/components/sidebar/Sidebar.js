@@ -1,15 +1,11 @@
 import React, { Component } from 'react'
 import './sidebar.styles.sass'
 
-class Sidebar extends Component {
-    render() {
-        return (
-            <aside className="col col--3-of-12">
+export const Sidebar = ({ children }) => {
+    return (
+        <aside className="col col--3-of-12 sidebar-content">
 
-                {this.props.children}
-            </aside>
-        )
-    }
+            {children}
+        </aside>
+    )
 }
-
-export default Sidebar

@@ -20,8 +20,8 @@ export default class Select extends Component {
         const { placeholder } = this.props
 
         return (
-            <div className="select-container">
-                <span className="selected" onClick={this.handleClick}>{selected ? selected : placeholder}</span>
+            <div className={`select-container ${this.props.className}`}>
+                <span className={`selected ${this.state.showOptions ? 'open' : ''}`} onClick={this.handleClick}>{selected ? selected : placeholder}</span>
                 <ul className="options">
                     {this.showOptions()}
                 </ul>

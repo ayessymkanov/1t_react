@@ -8,13 +8,18 @@ import IosPerson from 'react-icons/io/ios-person'
 import IosCog from 'react-icons/io/ios-cog'
 import Power from 'react-icons/io/power'
 
+import { connect } from 'react-redux'
+import { logout } from '../../action/login'
+
 const active = {
     backgroundColor: '#4a535c',
-    backgroundColor: '#3949AB'
+    backgroundColor: '#3949AB',
+    backgroundColor: '#4a475a'
 }
 
 class Navbar extends Component {
     render() {
+        const { loggedIn } = this.props
         return (
             <nav className="nav">
                 <div className="row">
@@ -27,8 +32,8 @@ class Navbar extends Component {
                         <Link to="/workspace" activeStyle={active}>Workspace</Link>
                     </div>
                     <div className="col col--3-of-12 profile">
-                        <a href="#" className="notifications-link"><IoAndroidNotificationsNone /></a>
-                        <a href="#" className="profile-link">
+                        {/* <a href="#" className="notifications-link"><IoAndroidNotificationsNone /></a> */}
+                        {!loggedIn ? <Link to="/login">Вход</Link> : <a href="#" className="profile-link">
                             <IoAndroidContact />
                             <ul className="profile-submenu">
                                 <li>
@@ -44,18 +49,28 @@ class Navbar extends Component {
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="#" onClick={this.handleLogout}>
                                         <Power className="profile-submenu-icon" />
                                         <span>Выход</span>
                                     </a>
                                 </li>
                             </ul>
-                        </a>
+                        </a>}
+
                     </div>
                 </div>
             </nav>
         )
     }
+    handleLogout = () => {
+        this.props.logout()
+    }
 }
 
-export default Navbar
+const mapStateToProps = (state) => {
+    return {
+        loggedIn: state.mainReducer.loggedIn
+    }
+}
+
+export default connect(mapStateToProps, {logout})(Navbar)

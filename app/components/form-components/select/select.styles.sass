@@ -1,12 +1,30 @@
 .select-container
     position: relative
     width: 200px
+    max-width: 100%
     background-color: white
 
 .selected
+    position: relative
     display: block
     padding: 3px 10px
     border: 1px solid #eee
+    &::after
+        position: absolute
+        content: ''
+        top: calc(50% + 2px)
+        right: 5px
+        transform: translateY(-50%)
+        display: block
+        width: 5px
+        height: 5px
+        border: 5px solid transparent
+        border-top: 5px solid #999
+
+    &.open::after
+        top: calc(50% - 2px)
+        border-top: 5px solid transparent
+        border-bottom: 5px solid #999
 
 .options
     position: absolute

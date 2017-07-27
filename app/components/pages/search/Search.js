@@ -1,60 +1,30 @@
 import React, { Component } from 'react'
-import Navbar from '../navbar/Navbar'
-import Sidebar from '../sidebar/Sidebar'
-import Content from '../content/Content'
-import SearchBar from '../searchBar/SearchBar'
+import Navbar from '../../navbar/Navbar'
+import { Sidebar } from '../../sidebar/Sidebar'
+import Content from '../../content/Content'
+import SearchBar from '../../searchBar/SearchBar'
 import { connect } from 'react-redux'
-import { startSearch } from '../../action/search'
-import { filterData } from '../../action/creators'
-import ProcItem from '../procItem/ProcItem'
+import { startSearch } from '../../../action/search'
+import { filterData } from '../../../action/creators'
+import ProcItem from '../../procItem/ProcItem'
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
-import Filter from '../filter/Filter'
+import Filter from '../../filter/Filter'
+import { Loader } from '../../loader/Loader'
 
 import './search.styles.sass'
-import './animation.css'
-
-const Loader = props => {
-    return (
-        <div className="loader">
-            <div className="sk-cube-grid">
-                <div className="sk-cube sk-cube1"></div>
-                <div className="sk-cube sk-cube2"></div>
-                <div className="sk-cube sk-cube3"></div>
-                <div className="sk-cube sk-cube4"></div>
-                <div className="sk-cube sk-cube5"></div>
-                <div className="sk-cube sk-cube6"></div>
-                <div className="sk-cube sk-cube7"></div>
-                <div className="sk-cube sk-cube8"></div>
-                <div className="sk-cube sk-cube9"></div>
-            </div>
-            <span>Загрузка</span>
-        </div>
-    )
-}
 
 class Search extends Component {
 
     render() {
-
         const { loading, loaded, data } = this.props
-
-        console.log('search props', this.props.data)
-
+        console.log('search props', this.props)
         const items = data.map(item => <li key={item.id}><ProcItem item={item} /></li>)
 
         return (
             <div>
                 <Navbar />
-                <div className="row">
+                <div className="container">
                     <Sidebar>
-                        {/* <div className="sidebar-content">
-                            <input
-                                type="checkbox"
-                                onChange={this.handleFilter}
-                                checked={this.props.idGreaterThanFive}
-                            />
-                            <label htmlFor="">ID greater than 5</label>
-                        </div> */}
                         <Filter onChangeCheckbox={this.handleFilter} idChecked={this.props.idGreaterThanFive} />
                     </Sidebar>
                     <Content>
@@ -83,21 +53,19 @@ class Search extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
-    const { inputString } = state
+    const { inputString } = state.searchReducer
     const reg = new RegExp(inputString, 'gi')
     return {
-        data: state.searchResults.filter(item => {
-            // state.idGreaterThanFive ? (item.id > 5 && item.name.match(reg)) : (item && item.name.match(reg))
-            if(state.idGreaterThanFive) {
+        data: state.searchReducer.searchResults.filter(item => {
+            if(state.searchReducer.idGreaterThanFive) {
                 return item.id > 5 && (item.name.match(reg) || item.username.match(reg))
             }
             return item && (item.name.match(reg) || item.username.match(reg))
         }),
-        loading: state.loading,
-        loaded: state.loaded,
-        error: state.error,
-        idGreaterThanFive: state.idGreaterThanFive
+        loading: state.searchReducer.loading,
+        loaded: state.searchReducer.loaded,
+        error: state.searchReducer.error,
+        idGreaterThanFive: state.searchReducer.idGreaterThanFive
     }
 }
 
