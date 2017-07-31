@@ -3,7 +3,7 @@ import { CHANGE_SEARCH_TERM, CHANGE_GSW_TYPE, CHANGE_GSW_CATEGORY, CHANGE_SEARCH
         CHANGE_UNIT_PRICE_FROM, CHANGE_UNIT_PRICE_THRU } from '../action/types'
 import { Record } from 'immutable'
 
-const Filter = Record({
+const FilterModel = Record({
     searchArea: '',
     searchTerm: '',
     gswType: '',
@@ -16,122 +16,32 @@ const Filter = Record({
     unitPriceThru: ''
 })
 
-const FilterState = new Filter()
+const FilterState = new FilterModel()
 
-const defaultState = {
-    searchArea: '',
-    searchTerm: '',
-    gswType: '',
-    gswCategory: '',
-    procurementSource: 'GZ',
-    procurementRegion: '',
-    procurementMethod: '',
-    announcementStatus: '',
-    unitPriceFrom: '',
-    unitPriceThru: ''
-}
-
-// export function filter(state = FilterState, action) {
-//     const { type, payload } = action
-//     switch(type) {
-//         case CHANGE_SEARCH_TERM: {
-//             return FilterState.set('searchTerm', payload)
-//         }
-//         case CHANGE_SEARCH_AREA: {
-//             return FilterState.set('searchArea', payload)
-//         }
-//         case CHANGE_GSW_TYPE: {
-//             return FilterState.set('gswType', payload)
-//         }
-//         case CHANGE_GSW_CATEGORY: {
-//             return FilterState.set('gswCategory', payload)
-//         }
-//         case CHANGE_PROCUREMENT_SOURCE: {
-//             return FilterState.set('procurementSource', payload)
-//         }
-//         case CHANGE_PROCUREMENT_REGION: {
-//             return FilterState.set('procurementRegion', payload)
-//         }
-//         case CHANGE_PROCUREMENT_METHOD: {
-//             return FilterState.set('procurementMethod', payload)
-//         }
-//         case CHANGE_ANNOUNCEMENT_STATUS: {
-//             return FilterState.set('announcementStatus', payload)
-//         }
-//         case CHANGE_UNIT_PRICE_FROM: {
-//             return FilterState.set('unitPriceFrom', payload)
-//         }
-//         case CHANGE_UNIT_PRICE_THRU: {
-//             return FilterState.set('unitPriceThru', payload)
-//         }
-//     }
-//     return state
-// }
-
-export function filter(state = defaultState, action) {
+export function filter(state = FilterState, action) {
     const { type, payload } = action
     switch(type) {
-        case CHANGE_SEARCH_TERM: {
-            return {
-                ...state,
-                searchTerm: payload
-            }
-        }
-        case CHANGE_SEARCH_AREA: {
-            return {
-                ...state,
-                searchArea: payload
-            }
-        }
-        case CHANGE_GSW_TYPE: {
-            return {
-                ...state,
-                gswType: payload
-            }
-        }
-        case CHANGE_GSW_CATEGORY: {
-            return {
-                ...state,
-                gswCategory: payload
-            }
-        }
-        case CHANGE_PROCUREMENT_SOURCE: {
-            return {
-                ...state,
-                procurementSource: payload
-            }
-        }
-        case CHANGE_PROCUREMENT_REGION: {
-            return {
-                ...state,
-                procurementRegion: payload
-            }
-        }
-        case CHANGE_PROCUREMENT_METHOD: {
-            return {
-                ...state,
-                procurementMethod: payload
-            }
-        }
-        case CHANGE_ANNOUNCEMENT_STATUS: {
-            return {
-                ...state,
-                announcementStatus: payload
-            }
-        }
-        case CHANGE_UNIT_PRICE_FROM: {
-            return {
-                ...state,
-                unitPriceFrom: payload
-            }
-        }
-        case CHANGE_UNIT_PRICE_THRU: {
-            return {
-                ...state,
-                unitPriceThru: payload
-            }
-        }
+        case CHANGE_SEARCH_TERM:
+            return state.set('searchTerm', payload)
+        case CHANGE_SEARCH_AREA:
+            return state.set('searchArea', payload)
+        case CHANGE_GSW_TYPE:
+            return state.set('gswType', payload)
+        case CHANGE_GSW_CATEGORY:
+            return state.set('gswCategory', payload)
+        case CHANGE_PROCUREMENT_SOURCE:
+            return state.set('procurementSource', payload)
+        case CHANGE_PROCUREMENT_REGION:
+            return state.set('procurementRegion', payload)
+        case CHANGE_PROCUREMENT_METHOD:
+            return state.set('procurementMethod', payload)
+        case CHANGE_ANNOUNCEMENT_STATUS:
+            return state.set('announcementStatus', payload)
+        case CHANGE_UNIT_PRICE_FROM:
+            return state.set('unitPriceFrom', payload)
+        case CHANGE_UNIT_PRICE_THRU:
+            return state.set('unitPriceThru', payload)
+        default:
+            return state
     }
-
-    return state
 }
