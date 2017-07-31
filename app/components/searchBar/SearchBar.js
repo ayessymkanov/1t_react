@@ -4,6 +4,7 @@ import IosSearchStrong from 'react-icons/io/ios-search-strong'
 import { connect } from 'react-redux'
 import { startSearch } from '../../action/search'
 import { Select, Option, Placeholder } from 'belle/lib'
+import { changeSearchArea, changeSearchTerm, changeUnitPriceFrom, changeUnitPriceThru } from '../../action/filter'
 // import Select from '../form-components/select/Select'
 
 const options = [
@@ -25,7 +26,7 @@ class SearchBar extends Component {
     render() {
         return (
             <form className="search-form" onSubmit={this.handleSearch}>
-                <Select className="search-options" onUpdate={this.handleChange}>
+                <Select className="search-options" onUpdate={this.changeSearchArea}>
                     <Placeholder>Искать в </Placeholder>
                     <Option value="ob">Объявление</Option>
                     <Option value="lot">Лот</Option>
@@ -44,18 +45,21 @@ class SearchBar extends Component {
                 </button>
                 <div className="prices">
                     <span>Цены</span>
-                    <input type="number" placeholder="от" step="1000"/>
-                    <input type="number" placeholder="до" step="1000"/>
+                    <input type="number" placeholder="от" step="1000" onChange={this.changeUnitPriceFrom}/>
+                    <input type="number" placeholder="до" step="1000" onChange={this.changeUnitPriceThru}/>
                 </div>
             </form>
         )
     }
-    handleChange = e => {
-        const { inputValue, whereToSearch } = this.state
-        this.setState({
-            whereToSearch: e.value
-        })
-        this.props.startSearch(inputValue, whereToSearch)
+    changeSearchArea = arg => {
+        this.props.changeSearchArea(arg.value)
+        this.props.startSearch()
+    }
+    changeUnitPriceFrom = e => {
+        this.props.changeUnitPriceFrom(e.target.value)
+    }
+    changeUnitPriceThru = e => {
+        this.props.changeUnitPriceThru(e.target.value)
     }
     handleSearch = e => {
         const { inputValue, whereToSearch } = this.state
@@ -66,7 +70,8 @@ class SearchBar extends Component {
         this.setState({
             inputValue: e.target.value
         })
+        this.props.changeSearchTerm(e.target.value)
     }
 }
 
-export default connect(null, {startSearch}) (SearchBar)
+export default connect(null, {startSearch, changeSearchArea, changeSearchTerm, changeUnitPriceFrom, changeUnitPriceThru}) (SearchBar)

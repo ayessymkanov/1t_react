@@ -3,17 +3,18 @@ import PropTypes from 'prop-types'
 import Checkbox from '../form-components/checkbox/Checkbox'
 import Radio from '../form-components/radio/Radio'
 import FormGroup from '../form-components/formGroup/FormGroup'
-import Select from '../form-components/select/Select'
+import { Select, Option } from 'belle/lib'
+import { changeProcurementSource } from '../../action/filter'
+import { connect } from 'react-redux'
 
 import './filter.styles.sass'
 
 const items = [
-    {label: 'Hello world1', value: 'Hello1'},
-    {label: 'Hello world2', value: 'Hello2'},
-    {label: 'Hello world3', value: 'Hello3'}
+    {label: 'Гос. закупки', value: 'GZ'},
+    {label: 'Самрук-Казына', value: 'SK'}
 ]
 
-export default class Filter extends Component {
+class Filter extends Component {
     render() {
         return (
             <div className="filter-container">
@@ -26,14 +27,21 @@ export default class Filter extends Component {
                     <Radio id="2" name="tru" label="Jobs" />
                     <Radio id="3" name="tru" label="Services" />
                 </FormGroup>
-                <FormGroup groupLabel="Testing Select">
-                    <Select options={items} placeholder="Please select" />
+                <FormGroup groupLabel="Источник">
+                    <Select  onUpdate={this.changeProcurementSource}>
+                        {items.map(item => <Option value={item.value} key={item.value}>{item.label}</Option>)}
+                    </Select>
                 </FormGroup>
             </div>
         )
+    }
+    changeProcurementSource = source => {
+        this.props.changeProcurementSource(source.value)
     }
 }
 
 Filter.PropTypes = {
     filterProps: PropTypes.object
 }
+
+export default connect(null, {changeProcurementSource})(Filter)

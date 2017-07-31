@@ -1,5 +1,5 @@
 import { FETCH_PROCITEMS, RETRIEVED_PROCITEMS, FETCH_ERROR,
-         FILTER_SEARCH_RESULTS, CHANGE_SEARCH_INPUT } from './types'
+         FILTER_SEARCH_RESULTS } from './types'
 
 export const startFetching = () => {
     return {
@@ -24,12 +24,5 @@ export const errorFetching = (payload) => {
 export const filterData = () => {
     return {
         type: FILTER_SEARCH_RESULTS
-    }
-}
-
-export const changeSearchInput = (payload) => {
-    return {
-        type: CHANGE_SEARCH_INPUT,
-        payload
     }
 }

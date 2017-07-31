@@ -1,14 +1,16 @@
 import { startFetching, finishFetching, errorFetching, changeSearchInput } from './creators'
 import axios from 'axios'
+import {store} from '../store'
 
-export function startSearch(inputString, whereToSearch) {
+console.log('in search ajax call', store.getState().filter)
+
+export function startSearch() {
     return (dispatch) => {
-        dispatch(changeSearchInput(inputString))
-        console.log('whereToSearch', whereToSearch)
         dispatch(startFetching())
-        axios.get('https://jsonplaceholder.typicode.com/users')
+        axios.get('https://jsonplaceholder.typicode.com/users') // change to proper URL
             .then(response => {
                 dispatch(finishFetching(response.data))
+                console.log('*****SUCCESS! Got your data*****', store.getState().filter)
             })
             .catch(error => dispatch(errorFetching(error)))
     }

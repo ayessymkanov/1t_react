@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import propTypes from 'prop-types'
 import Option from './Option'
 
 import './select.styles.sass'
@@ -45,14 +45,16 @@ export default class Select extends Component {
     }
 
     selectOption = (option) => {
-        console.log('this in selectOption', this)
         this.setState({
             selected: option.label,
             showOptions: !this.state.showOptions
         })
+        this.props.onChange(this.props.type, option.value)
     }
 }
 
 Select.PropTypes = {
-    options: PropTypes.array.isRequired
+    options: propTypes.array.isRequired,
+    onChange: propTypes.func,
+    type: propTypes.string
 }

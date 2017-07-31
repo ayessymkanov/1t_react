@@ -17,7 +17,6 @@ class Search extends Component {
 
     render() {
         const { loading, loaded, data } = this.props
-        console.log('search props', this.props)
         const items = data.map(item => <li key={item.id}><ProcItem item={item} /></li>)
 
         return (
@@ -56,16 +55,17 @@ const mapStateToProps = (state) => {
     const { inputString } = state.searchReducer
     const reg = new RegExp(inputString, 'gi')
     return {
-        data: state.searchReducer.searchResults.filter(item => {
-            if(state.searchReducer.idGreaterThanFive) {
-                return item.id > 5 && (item.name.match(reg) || item.username.match(reg))
-            }
-            return item && (item.name.match(reg) || item.username.match(reg))
-        }),
-        loading: state.searchReducer.loading,
-        loaded: state.searchReducer.loaded,
-        error: state.searchReducer.error,
-        idGreaterThanFive: state.searchReducer.idGreaterThanFive
+        // data: state.searchReducer.searchResults.filter(item => {
+        //     if(state.searchReducer.idGreaterThanFive) {
+        //         return item.id > 5 && (item.name.match(reg) || item.username.match(reg))
+        //     }
+        //     return item && (item.name.match(reg) || item.username.match(reg))
+        // }),
+        data: state.searchReducer.get('searchResults'),
+        loading: state.searchReducer.get('loading'),
+        loaded: state.searchReducer.get('loaded'),
+        error: state.searchReducer.get('error'),
+        idGreaterThanFive: state.searchReducer.get('idGreaterThanFive')
     }
 }
 
