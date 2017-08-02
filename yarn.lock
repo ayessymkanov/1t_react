@@ -3648,7 +3648,7 @@ prop-types@15.5.8:
   dependencies:
     fbjs "^0.8.9"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6:
+prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.8:
   version "15.5.10"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.10.tgz#2797dfc3126182e3a95e3dfbb2e893ddd7456154"
   dependencies:
@@ -3786,12 +3786,22 @@ react-icons@^2.2.5:
   dependencies:
     react-icon-base "2.0.7"
 
+react-onclickoutside@^6.4.0:
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/react-onclickoutside/-/react-onclickoutside-6.4.0.tgz#f7552307305079bfb111783f408928abe7248a1e"
+
 react-proxy@^1.1.7:
   version "1.1.8"
   resolved "https://registry.yarnpkg.com/react-proxy/-/react-proxy-1.1.8.tgz#9dbfd9d927528c3aa9f444e4558c37830ab8c26a"
   dependencies:
     lodash "^4.6.1"
     react-deep-force-update "^1.0.0"
+
+react-radio-group@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/react-radio-group/-/react-radio-group-3.0.2.tgz#b1f1c67f8ef95a988287cdb3c687ec41a9ced8c6"
+  dependencies:
+    prop-types "^15.5.8"
 
 react-redux@^5.0.5:
   version "5.0.5"

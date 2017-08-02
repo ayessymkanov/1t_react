@@ -28,7 +28,7 @@ class SearchBar extends Component {
             <form className="search-form" onSubmit={this.handleSearch}>
                 <Select className="search-options" onUpdate={this.changeSearchArea}>
                     <Placeholder>Искать в </Placeholder>
-                    <Option value="ob">Объявление</Option>
+                    <Option value="announcements">Объявление</Option>
                     <Option value="lot">Лот</Option>
                     <Option value="plan">План закупок</Option>
                 </Select>
@@ -64,7 +64,7 @@ class SearchBar extends Component {
     handleSearch = e => {
         const { inputValue, whereToSearch } = this.state
         e.preventDefault()
-        this.props.startSearch(inputValue, whereToSearch)
+        this.props.startSearch()
     }
     handleInput = e => {
         this.setState({

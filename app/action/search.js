@@ -7,6 +7,7 @@ console.log('in search ajax call', store.getState().filter)
 export function startSearch() {
     return (dispatch) => {
         dispatch(startFetching())
+        console.log(store.getState().filter.toJS())
         axios.get('https://jsonplaceholder.typicode.com/users') // change to proper URL
             .then(response => {
                 dispatch(finishFetching(response.data))

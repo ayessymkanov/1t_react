@@ -3,7 +3,7 @@ import thunk from 'redux-thunk'
 import { mainReducer } from './reducers/mainReducer'
 import { searchReducer } from './reducers/searchReducer'
 import { docsReducer } from './reducers/docsReducer'
-import { filter } from './reducers/filter'
+import { filter } from './reducers/filterReducer'
 import logger from 'redux-logger'
 
 const middleware = applyMiddleware(thunk, logger)

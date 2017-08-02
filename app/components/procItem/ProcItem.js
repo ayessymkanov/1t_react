@@ -1,50 +1,73 @@
 import React, { Component } from 'react'
+import { Select, Option, Placeholder } from 'belle/lib'
+import ActionsDropdown from '../actionsDropdown/ActionsDropdown'
 import './procItem.styles.sass'
 import { connect } from 'react-redux'
 import { addToFolder1, addToFolder2, addToFolder3 } from '../../action/docs'
+import { Link } from 'react-router'
 
 class ProcItem extends Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            showActions: false
+        }
+    }
+
     render() {
         const { username, name, email, address: { city, street, suite, zipcode }} = this.props.item
         return (
             <div className="item">
-                <div className="item-desc">
-                    <div className="price">
-                        {username}
+                <Link to={`/${this.props.item.id}`} target="_blank">
+                    <div className="main-info">
+                        <div className="left">
+                            <h4>{username}</h4>
+                        </div>
+                        <div className="right">
+                            <h5>{name}</h5>
+                            <p>{email}</p>
+                        </div>
                     </div>
-                    <div className="desc">
-                        <span>{name}</span>
-                        <a href="#">{email}</a>
+                    <div className="more-info">
+                        <div className="more-item">{city}</div>
+                        <div className="more-item">{street}</div>
+                        <div className="more-item">{suite}</div>
+                        <div className="more-item">{zipcode}</div>
                     </div>
-                </div>
-                <div className="item-more">
-                    <div className="more-item">{city}</div>
-                    <div className="more-item">{street}</div>
-                    <div className="more-item">{suite}</div>
-                    <div className="more-item">{zipcode}</div>
-                </div>
-                <button onClick={this.addToFolder1}>
-                    Add to folder1
-                </button>
-                <button onClick={this.addToFolder2}>
-                    Add to folder2
-                </button>
-                <button onClick={this.addToFolder3}>
-                    Add to folder3
-                </button>
+                </Link>
+                <ActionsDropdown
+                    className="dropdown"
+                    handleClick={this.toggleActionsShow}
+                    showActions={this.state.showActions}
+                    hideActions={this.hideActions}
+                    addToFolder1={this.addToFolder1}
+                    addToFolder2={this.addToFolder2}
+                    addToFolder3={this.addToFolder3}
+                 />
             </div>
         )
     }
+
+    toggleActionsShow = () => {
+        this.setState({
+            showActions: !this.state.showActions
+        })
+    }
+
+    hideActions = () => {
+        this.setState({
+            showActions: false
+        })
+    }
+
     addToFolder1 = () => {
-        console.log(this)
         this.props.addToFolder1(this.props.item)
     }
     addToFolder2 = () => {
-        console.log(this)
         this.props.addToFolder2(this.props.item)
     }
     addToFolder3 = () => {
-        console.log(this)
         this.props.addToFolder3(this.props.item)
     }
 }

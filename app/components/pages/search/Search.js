@@ -30,7 +30,7 @@ class Search extends Component {
                         <SearchBar />
                             {!loading && !loaded && <h4>Start searching for tenders</h4> }
                             {!loading && loaded && (data.length === 0) && <h4>Sorry, no matches found</h4>}
-                            {!loading && loaded && (data.length !== 0) && <h6>Найдено тендеров: {data.length}</h6>}
+                            {!loading && loaded && (data.length !== 0) && <h6>Найдено тендеров: {data.size}</h6>}
                             {loading ? <Loader /> : <ul>
                                 <CSSTransitionGroup
                                     transitionName="appear"

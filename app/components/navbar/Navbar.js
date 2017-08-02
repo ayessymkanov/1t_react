@@ -24,7 +24,7 @@ class Navbar extends Component {
             <nav className="nav">
                 <div className="row">
                     <div className="col col--3-of-12 logo">
-                        <Link to="/" >1t.kz</Link>
+                        <Link to="/">1t.kz</Link>
                     </div>
                     <div className="col col--6-of-12 menu ">
                         <Link to="/news" activeStyle={active}>News</Link>

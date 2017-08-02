@@ -6,7 +6,7 @@ import { Record } from 'immutable'
 const FilterModel = Record({
     searchArea: '',
     searchTerm: '',
-    gswType: '',
+    gswType: 'G',
     gswCategory: '',
     procurementSource: 'GZ',
     procurementRegion: '',
