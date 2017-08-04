@@ -19,7 +19,7 @@ class ProcItem extends Component {
         const { username, name, email, address: { city, street, suite, zipcode }} = this.props.item
         return (
             <div className="item">
-                <Link to={`/${this.props.item.id}`} target="_blank">
+                <Link to={`/${this.props.item.id}`} className="proc-item-link" target="_blank">
                     <div className="main-info">
                         <div className="left">
                             <h4>{username}</h4>

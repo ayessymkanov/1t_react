@@ -31,10 +31,6 @@ class Filter extends Component {
     render() {
         return (
             <div className="filter-container">
-                {/* <FormGroup groupLabel="Checkboxes">
-                    <Checkbox id="id" label="ID greater than 5" onChange={this.props.onChangeCheckbox} isChecked={this.props.idChecked} />
-                    <Checkbox id="id2" label="ID greater than 10" />
-                </FormGroup> */}
                 <FormGroup groupLabel="ТРУ">
                     <RadioGroup name="tru" selectedValue={this.props.gswType} onChange={this.changeGswType}>
                         <label className="radio-item"><Radio value="G" className="radio" />Товары</label>

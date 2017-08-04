@@ -1,39 +1,55 @@
 import { ADD_TO_FOLDER1, ADD_TO_FOLDER2, ADD_TO_FOLDER3 } from '../action/types'
-import { Record, List } from 'immutable'
 
-const FolderModel = Record({
-    id: null,
-    name: '',
-    items: List()
-})
-
-const DocsModel = Record({
-    folder1: new FolderModel({
+const defaultState = {
+    folder1: {
         id: 1,
-        name: 'Папка 1'
-    }),
-    folder2: new FolderModel({
+        name: 'Favorites',
+        items: []
+    },
+    folder2: {
         id: 2,
-        name: 'Папка 2'
-    }),
-    folder3: new FolderModel({
+        name: 'Later',
+        items: []
+    },
+    folder3: {
         id: 3,
-        name: 'Папка 3'
-    })
-})
+        name: 'Top tenders',
+        items: []
+    }
+}
 
-const initialState = new DocsModel()
 
-export function docsReducer(state = initialState, action) {
+export function docsReducer(state = defaultState, action) {
     const { type, payload } = action
 
     switch(type) {
-        case ADD_TO_FOLDER1:
-            return state.updateIn(['folder1', 'items'], docs => docs.push(payload))
-        case ADD_TO_FOLDER2:
-            return state.updateIn(['folder2', 'items'], docs => docs.push(payload))
-        case ADD_TO_FOLDER3:
-            return state.updateIn(['folder3', 'items'], docs => docs.push(payload))
+        case ADD_TO_FOLDER1: {
+            return {
+                ...state,
+                folder1: {
+                    ...state.folder1,
+                    items: [...state.folder1.items, payload]
+                }
+            }
+        }
+        case ADD_TO_FOLDER2: {
+            return {
+                ...state,
+                folder2: {
+                    ...state.folder2,
+                    items: [...state.folder2.items, payload]
+                }
+            }
+        }
+        case ADD_TO_FOLDER3: {
+            return {
+                ...state,
+                folder3: {
+                    ...state.folder3,
+                    items: [...state.folder3.items, payload]
+                }
+            }
+        }
     }
     return state
 }

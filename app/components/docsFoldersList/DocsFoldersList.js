@@ -4,7 +4,9 @@ import { connect } from 'react-redux'
 import DocsFolder from '../docsFolder/DocsFolder'
 
 class DocsFoldersList extends Component {
+
     render() {
+        console.log('docsFolderList props', this.props)
         const folders = this.props.folders.map(folder => <li key={folder.id}><DocsFolder folder={folder} /></li>)
         return (
             <ul>
@@ -16,6 +18,6 @@ class DocsFoldersList extends Component {
 
 export default connect(state => {
     return {
-        folders: state.docsReducer.toArray()
+        folders: Object.keys(state.docsReducer).map(key => state.docsReducer[key])
     }
 }, null)(DocsFoldersList)
