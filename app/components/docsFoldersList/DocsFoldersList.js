@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
-
-import { connect } from 'react-redux'
 import DocsFolder from '../docsFolder/DocsFolder'
+import { connect } from 'react-redux'
+import { deleteDoc } from '../../action/docs'
 
 class DocsFoldersList extends Component {
 
     render() {
-        console.log('docsFolderList props', this.props)
-        const folders = this.props.folders.map(folder => <li key={folder.id}><DocsFolder folder={folder} /></li>)
+        const folders = this.props.folders.map(folder => <li key={folder.id}><DocsFolder folder={folder} deleteDoc={this.props.deleteDoc} /></li>)
         return (
             <ul>
                 {folders}
@@ -20,4 +19,4 @@ export default connect(state => {
     return {
         folders: Object.keys(state.docsReducer).map(key => state.docsReducer[key])
     }
-}, null)(DocsFoldersList)
+}, {deleteDoc})(DocsFoldersList)

@@ -20,7 +20,36 @@
         content: 'hide'
 
 .doc-item
+    display: flex
+    justify-content: space-between
+    align-items: center
     padding: .25rem .5rem
-    border: 1px solid black
+    transition: all 200ms
     &:hover
         background-color: #eee
+
+.doc-title
+    text-overflow: ellipsis
+
+.delete-doc
+    position: relative
+    height: 15px
+    width: 15px
+    transition: all 200ms
+    cursor: pointer
+    &:hover
+        background-color: white
+    &::after,
+    &::before
+        content: ''
+        position: absolute
+        top: 50%
+        left: 50%
+        display: block
+        width: 15px
+        height: 1px
+        border-radius: 3px
+        background-color: #777
+        transform: translate(-50%, -50%) rotateZ(45deg)
+    &::before
+        transform: translate(-50%, -50%) rotateZ(-45deg)
