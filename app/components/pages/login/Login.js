@@ -9,6 +9,11 @@ import { connect } from 'react-redux'
 import { Redirect, browserHistory } from 'react-router'
 
 class Login extends Component {
+
+    componentDidMount() {
+        document.title = this.props.route.title
+    }
+
     render() {
         return (
             <div className="login">

@@ -5,6 +5,11 @@ import Content from '../../content/Content'
 import DocsFoldersList from '../../docsFoldersList/DocsFoldersList'
 
 class Workspace extends Component {
+
+    componentDidMount() {
+        document.title = this.props.route.title
+    }
+
     render() {
         return (
             <div>

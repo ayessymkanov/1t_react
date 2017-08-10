@@ -10,14 +10,14 @@
     padding: .5rem
 
     &::after
-        content: 'show'
+        content: 'показать'
         position: absolute
         right: .5rem
         font-weight: normal
         font-size: .8rem
 
     &.shown::after
-        content: 'hide'
+        content: 'свернуть'
 
 .doc-item
     display: flex
@@ -29,10 +29,14 @@
         background-color: #eee
 
 .doc-title
+    flex: 20
+    white-space: nowrap
+    overflow: hidden
     text-overflow: ellipsis
 
 .delete-doc
     position: relative
+    flex: 1
     height: 15px
     width: 15px
     transition: all 200ms

@@ -16,24 +16,24 @@ class ProcItem extends Component {
     }
 
     render() {
-        const { username, name, email, address: { city, street, suite, zipcode }} = this.props.item
+        const { gswNameRu, unitPrice, gswAdditionalDescrRu,itemType, gswTypeCode, gswNameKz, measurementUnitCode } = this.props.item
         return (
             <div className="item">
                 <Link to={`/${this.props.item.id}`} className="proc-item-link" target="_blank">
                     <div className="main-info">
                         <div className="left">
-                            <h4>{username}</h4>
+                            <h4>{unitPrice} тг</h4>
                         </div>
                         <div className="right">
-                            <h5>{name}</h5>
-                            <p>{email}</p>
+                            <h5>{gswNameRu}</h5>
+                            <p>{gswAdditionalDescrRu || 'Нет данных'}</p>
                         </div>
                     </div>
                     <div className="more-info">
-                        <div className="more-item">{city}</div>
-                        <div className="more-item">{street}</div>
-                        <div className="more-item">{suite}</div>
-                        <div className="more-item">{zipcode}</div>
+                        <div className="more-item">{gswNameKz || 'Нет данных'}</div>
+                        <div className="more-item">{itemType || 'Нет данных'}</div>
+                        <div className="more-item">{gswTypeCode || 'Нет данных'}</div>
+                        <div className="more-item">{measurementUnitCode || 'Нет данных'}</div>
                     </div>
                 </Link>
                 <ActionsDropdown

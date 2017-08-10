@@ -4,6 +4,11 @@ import { Sidebar } from '../../sidebar/Sidebar'
 import Content from '../../content/Content'
 
 class News extends Component {
+
+    componentDidMount() {
+        document.title = this.props.route.title
+    }
+
     render() {
         return (
             <div>

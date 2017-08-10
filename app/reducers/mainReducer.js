@@ -1,10 +1,10 @@
 import { LOGIN, LOGOUT } from '../action/types'
 
-const initialState = {
+const defaultState = {
     loggedIn: false
 }
 
-export function mainReducer(state = initialState, action) {
+export function mainReducer(state = defaultState, action) {
     const { type, payload } = action
     switch(type) {
         case LOGIN: {

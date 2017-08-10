@@ -15,6 +15,10 @@ import './search.styles.sass'
 
 class Search extends Component {
 
+    componentDidMount() {
+        document.title = this.props.route.title
+    }
+
     render() {
         const { loading, loaded, data } = this.props
         const items = data.map(item => <li key={item.id}><ProcItem item={item} /></li>)

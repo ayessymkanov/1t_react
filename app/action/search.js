@@ -8,9 +8,10 @@ export function startSearch() {
     return (dispatch) => {
         dispatch(startFetching())
         console.log(store.getState().filter.toJS())
-        axios.get('https://jsonplaceholder.typicode.com/users') // change to proper URL
+        axios.get('http://localhost:9000/backend/api/procurement/search', store.getState().filter.toJS()) // change to proper URL
             .then(response => {
-                dispatch(finishFetching(response.data))
+                console.log('response-----------', response)
+                dispatch(finishFetching(response.data.content))
                 console.log('*****SUCCESS! Got your data*****', store.getState().filter)
             })
             .catch(error => dispatch(errorFetching(error)))

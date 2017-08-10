@@ -6,7 +6,13 @@ import Workspace from '../workspace/Workspace'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 class Main extends Component {
+
+    componentDidMount() {
+        document.title = this.props.route.title
+    }
+
     render() {
+        console.log('main props', this.props)
         return (
             <div>
                 <Navbar />

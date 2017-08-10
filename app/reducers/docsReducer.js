@@ -3,17 +3,17 @@ import { ADD_TO_FOLDER1, ADD_TO_FOLDER2, ADD_TO_FOLDER3, DELETE_FROM_FOLDER1, DE
 const defaultState = {
     folder1: {
         id: 1,
-        name: 'Favorites',
+        name: 'Избранное',
         items: []
     },
     folder2: {
         id: 2,
-        name: 'Later',
+        name: 'Посмотреть позже',
         items: []
     },
     folder3: {
         id: 3,
-        name: 'Top tenders',
+        name: 'Топ тендеры',
         items: []
     }
 }
